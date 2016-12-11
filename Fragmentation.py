@@ -31,10 +31,10 @@ def Frag(in_raster,window_x,window_y,from_value,to_value):
                 for j in range(window_x):
                     new_row,new_col = window_y*row+i,window_x*col+j
                     if i != window_y -1:
-                        if in_array[new_row,new_col] == from_value and in_array[new_row+1,new_col] == to_value:
+                        if in_array[i,j] == from_value and in_array[i+1,j] == to_value:
                             value += 1
                     if j != window_x -1:
-                        if in_array[new_row,new_col] == from_value and in_array[new_row,new_col+1] == to_value:
+                        if in_array[i,j] == from_value and in_array[i,j+1] == to_value:
                             value += 1
             new_array[row,col] = value
     out_res = arcpy.NumPyArrayToRaster(new_array,corner,cell_size_x*window_x,cell_size_y*window_y)
